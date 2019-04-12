@@ -1,21 +1,11 @@
-import getNumber from '../src/js/app';
+import heroesToString from '../src/js/app';
 
-test('should return number', () => {
-  expect(getNumber('80')).toBe(80);
-});
+const hero = {
+  name: 'Лучник', type: 'Bowman', health: 50, level: 1, attack: 40, defence: 10,
+};
 
-test('input null should return error', () => {
-  expect(getNumber('0')).toEqual(Error('Ввод некорректен'));
-});
-
-test('input negative should return error', () => {
-  expect(getNumber('-1')).toEqual(Error('Ввод некорректен'));
-});
-
-test('input non integer should return error', () => {
-  expect(getNumber('0.6')).toEqual(Error('Ввод некорректен'));
-});
-
-test('input string should return error', () => {
-  expect(getNumber('string')).toEqual(Error('Ввод некорректен'));
+test('should show hero info with smile icon', () => {
+  const recieved = heroesToString(hero);
+  const expected = '😠 Л(1) ⚔ 40 🛡 10 ❤ 50';
+  expect(expected).toBe(recieved);
 });
